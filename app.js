@@ -1,0 +1,486 @@
+// Typescript   vs    Javascript
+//  type define (typedef) kr skte hain typescript mein unlike JS 
+// hm class functions variables define kr skte hain 
+// basically ek line mein bole toh typescript is an OOP's programming language umlike JS
+// suports ECMAscript
+// hm log ts ko directly run nhi kr skte 
+// ts ko phle js mein convert krna with tsc (typescript compiler) and then add it to html file and run it
+// run a simpe program
+// var a = "This is Anubhav";
+// console.warn(a);
+/////////////////////////////////////////////////////////////
+// class
+// class App{
+//     test(){
+//         console.warn("test function is working...");
+//     }
+// }
+// let a1 = new App();
+// a1.test();
+/////// tips ////////////
+// 1. What is duplicate identifier ?
+// toh yahan pr App ek class hain and app.js mein App ek var hai ..toh agar yeh APP
+// alag alag files mein hain toh kyun duplicate identifier ka error aah raha hai ?
+// toh basically agar hm js ki files ek hi folder mein rakhte hain toh woh files as a script 
+// kaam krti hain jisse ki agar common names honge toh show krega error 
+// solution ?
+// uss file ko MODULAR APPROACH mein rakhna hai 
+// use export{}
+///////////////////////////////////////////////////////////////////
+// export{}
+// class App{
+//     test(){
+//         console.warn("test function is working...");
+//     }
+// }
+// let a1 = new App();
+// a1.test();
+////////////////////////////////////////////////////////////////////
+// what is watch ?
+// watch basically avoid krega kya ?
+// baar baar joh hm command run krte hain naa powershell mein usko avoid krne k liye use below line
+// tsc app.tc --watch
+// yeh apke changes ko watch krega 
+//////////////////////////////////////////////////////
+// export{}
+// class App{
+//     test(){
+//         console.warn("test function is working fine...");
+//     }
+// }
+// let x = new App();
+// x.test();
+//////////////////////////////////////////////////////
+// Now apko browser mein baar chalane ki jagay app shell mein bhi console krwa skte ho
+// by using : node app.js 
+// agar app button yah events use kr rhe ho toh toh fir apko browser mein hi run krana hoga 
+//////////////////////////////////////////////////////
+//  type in typescript ?
+// to define the type of a variable ,functions
+// like in c++, 
+// int a=10;
+// var a:number = 10;
+// console.warn(a);
+// var a:string = 10;
+// console.warn(a);            ---------error since 
+//type 10 != type string 
+/////////////////////////////////////////////////////////////////
+// arrays in ts/php 
+// arrays in ts/php can contain different data types in the same array unlike in c++ and java
+// are called mix array 
+// export{}
+// let data = ['this','is','anubhav'];
+// console.log(data);
+// export{}
+// let data = ['this','is','anubhav',100];
+// data.push(true)
+// console.log(data);
+//  --------------------error
+////----toh mixed array k andhar koi data type push krne k liye yeh zaruri hai hai ki 
+// voh vala data type exist krna chahiye apne array mein
+// for example :
+// export{}
+// let data = ['this','is','anubhav',10];
+// data.push(100);
+// console.log(data);
+// export{}
+// let data = ['this','is','anubhav',10,true];
+// data.push(true);
+// console.log(data);
+// export{}
+// let data = ['this','is','anubhav',10,true];
+// data[3]=true;
+// console.log(data);
+// export{}
+// let data:string = ['this','is','anubhav',10,true];
+// data[3]=true;
+// console.log(data);
+// ------------------------->error 
+// export{}
+// let data:string[] = ['this','is','anubhav'];
+// console.log(data);
+// /-----mixed array k andhar app ek particular data type of array define nhi kr skte else it will resuls into error 
+/////////////////////////////////////////////////
+// default typed object
+// export{}
+// let users = {
+//     name:'Anubhav',
+//     age:19,
+//     location:'India'
+// }
+// users.location = 300;
+//  ----------since it is a default typed object 
+// console.log(users);
+// export{}
+// let users = {
+//     name:'Anubhav',
+//     age:19,
+//     location:'India'
+// }
+// users.name='Anu';
+// console.log(users)
+// ---------------custom typed object 
+/////////what is custom typed object ?
+// hmm kisi bhi object k data members ka data type phle se hi define kr skte hain
+// for ex:
+// export{}
+// interface usersTyped{
+//     name:string,
+//     age:number,
+//     location:number
+// }
+// let users:usersTyped = {
+//     name:'Anubhav',
+//     age:19,
+//     location:'India'
+// }
+// console.log(users)
+///////////////////////////////////////////////////////////////////
+// export{}
+// interface usersTyped{
+//     name:number,
+//     age:number,
+//     location:string
+// }
+// let users:usersTyped = {
+//     name:'Anubhav',
+//     age:19,
+//     location:'India'
+// }
+// console.warn(users)
+// ----------------------------------> error since it is customed typed array 
+///////////what is any?
+// in custom typed array if you are not sure about the datatype of any particular data member of an object use "any" there
+//for ex:
+// export{}
+// interface usersTyped{
+//     name:string,
+//     age:number,
+//     location:any
+// }
+// let users:usersTyped = {
+//     name:'Anubhav',
+//     age:19,
+//     location:100
+// }
+// console.warn(users)
+// now if you are not sure about the data types of the entire object data members then use "any"like as below:
+// export{}
+// let users:any= {
+//     name:'Anubhav',
+//     age:19,
+//     location:100
+// }
+// users.location=1000;
+// console.warn(users)
+//////////////////////////
+// What is union ?
+// union basically help krta hai multiple type k data types ko ek hi varibale ko assign krne mein
+//for ex:
+// export{}
+// let a = 'Anubhav';
+// console.warn(a);
+// export{}
+// let a:string = 'Anubhav';
+// console.warn(a);
+// export{}
+// let a:string | number | boolean= 'Anubhav';
+// a=100;
+// a=true;
+// console.warn(a);
+//////////////////
+// what is Interface ?
+// In a class or an object we have multiple properties which have different data types so we cant define the 
+// the data type of an class or an object particularly 
+// toh hm kya krte hain uss class yah object ki properties k data types hm phle sehi define kr skte hain
+// using interface which is a template of the data types of the properties if a class or an object.
+////////////////////////////////////////////////
+// using interface in objects \
+// export{}
+// interface userType{
+//     name:string ,
+//     age:number
+// }
+// let users:userType  = {
+//     name:"Anubhav",
+//     age:19
+// }
+// console.warn(users);
+///////////////////////////////////
+// interface using objects with functions
+// export{}
+// interface userType{
+//     name:string ,
+//     age:number,
+//     getName : ()=>string;
+// }
+// let users:userType  = {
+//     name:"Anubhav",
+//     age:19,
+//     getName : function(){ 
+//         return 'Anubhav Agrawal';
+//     }
+// }
+// console.warn(users.getName());
+////////////////////////////////////////////////////////////////
+// function data type
+// export{}
+// function calc(a):number
+// {
+//     return 'hello';
+// }
+// console.warn(calc(10));
+// ---------> error 
+// export{}
+// function calc(a:number):number
+// {
+//     return a;
+// }
+// console.warn(calc(10));
+// export{}
+// function calc(a:number):number
+// {
+//     return a;
+// }
+// console.warn(calc('10'));
+// --------->error 
+// export{}
+// function calc(a:number,b?:number):number
+// {
+//     return b?a+b:a;
+// }
+// console.warn(calc(10));
+////////////////////////////////////////////
+// if may be i can pass one value in function
+// in thatx case i can use "?" and apply ternary condition in return statement accordingly
+// export{}
+// function calc(a:number,b?:number):number
+// {
+//     return b?a+b:a;
+// }
+// console.warn(calc(10));
+///////////////////////////////////////////
+// classes in  typescript 
+// export{}
+// class App {
+//     name = 'Anubhav Agrawal'
+//     getName()
+//     {
+//         console.log(this.name);
+//     }
+// }
+// let a1 = new App();
+// a1.getName();
+// export{}
+// class App {
+//     name = 'Anubhav Agrawal'
+//     constructor(){
+//         console.log('constructor called...');
+//     }
+//     getName()
+//     {
+//         console.log(this.name);
+//     }
+// }
+// let a1 = new App();
+// a1.getName();
+// export{}
+// class App {
+//     name;
+//     constructor(name){
+//         this.name=name;
+//     }
+//     getName()
+//     {
+//         console.log(this.name);
+//     }
+// }
+// let a1 = new App('Anubhav');
+// a1.getName();
+// export{}
+// class App {
+//     name;
+//     constructor(name:string){
+//         this.name=name;
+//     }
+//     getName():string                    // getName():void ---> if nothing is to be return
+//     {
+//         // console.log(this.name);
+//         return this.name;
+//     }
+// }
+// let a1 = new App('Anubhav Agrawal');
+// console.warn(a1.getName());
+////////////////////////////////
+// ---------------------------> Inheritance in Typescript
+// export{}
+// class App{
+//     name;
+//     setName(name)
+//     {
+//       this.name=name;
+//     }
+// }
+// class childApp extends App {
+//     getName()
+//     {
+//         return this.name ;
+//     }
+// }
+// let a1 = new childApp();
+// a1.setName('Peter');
+// console.warn(a1.getName());
+/////////////////////////////////////////////////////////
+// what is namespace ?
+// a piece of code which is inter-related 
+// like details about the user , his username ,password, email id....
+///////////////////// namespace hamesha export k saath use hota hai
+/////////////////   namesapce ko run krne k liye hm hamesha dusri command use krte hain
+// tsc app.ts --outfile out.js
+// export{}
+// namespace Utils{
+//     export class users{
+//         name='Anubhav Agrawal';
+//         getName(){
+//             return 'Hey there !';
+//         }
+//     }
+// }
+// let a1 = new Utils.users();
+// console.warn(a1.getName());
+/////////// importing from Utiles file a parent class 
+// /// <reference path="./utils.ts"/>
+// namespace Utils{
+//     export class users extends Parent{
+//         getName(){
+//             return this.name;
+//         }
+//     }
+// }
+// let a1 = new Utils.users();
+// a1.setName('Anubhav Set Name');
+// console.warn(a1.getName());
+//////////// how to make sure that function getName must be called and this is also called using using interface
+// /// <reference path="./utils.ts"/>
+// namespace Utils{
+//     export class users extends Parent implements userType{
+//         getName(){
+//             return this.name;
+//         }
+//     }
+// }
+// let a1 = new Utils.users();
+// a1.setName('Anubhav implemented interface and class within namespace');
+// console.warn(a1.getName());
+//////////////////////////////////////////////////////////////////////////////////
+// what is module ?
+// agar mujhe same function yah same variable in multiple files mein declare krna hai toh ek error ata hai
+// which is double identifier error 
+// iskoresole krta hai module isse app ek hi naam se function doh alg alag files mein bna skte hoo
+// teacher and student login same rhega jisse alag alag define krne ki  zarurat na pade login dono mein
+//teacher.ts and student.ts
+// import tLogin from './teacher';
+// import sLogin from './student';
+// let teacher1 = new tLogin();
+// console.warn(teacher1.data);
+// let student1 = new sLogin();
+// console.warn(student1.data);
+// what is Generics ?
+// ek aise general function bnate hain joh hm kahin bhi use kr skt ehian and uske andhar jis type ka input hm send krte hain 
+// usse oh function determine lkr leta hai ki usi type ka data type return krna hai isse hme 
+// svka data type declare krne ki zarurat nhi hai 
+// function users(data){
+//     return data;
+// }
+// console.warn(users({name:"Anubhav Agrawal", age:19}));
+// function users(data:object):object
+// {
+//     return data;
+// }
+// console.warn(users({name:"Anubhav Agrawal", age:19}));
+// function users(data:string):object
+// {
+//     return data;
+// }
+// console.warn(users(10));
+// ------------> error 
+// toh mein chahta hoon ki mein function k andhar kisi bhi type ka datatype pass kr sakon 
+// html attribute ki tarah <T> or we can use anything like <X> but generally T use krte hain...isko hm identifier khte hain
+function users(data) {
+    return data;
+}
+console.warn(users(10));
+// function users<T>(data:T):T
+// {
+//     return data;
+// }
+// console.warn(users("Anubhav"));
+// function users<T>(data:T):T
+// {
+//     return "20";
+// }
+// console.warn(users("Anubhav"));
+// ----------->error 
+// function users<T>(data:T):T
+// {
+//     return data;
+// }
+// console.warn(users({name:"Intervue.io",services:"on-demand interviews"}).services);
+//////////////////////////////////////////////////////////////
+// what is enum ?
+// enum k andhar hm kuvh set of values define krte hain and function and variables k saath agar hm
+// enum use krte hai toh unn variables and funcions ki values sirf usi enum set ki values
+// mein se hi ek honi chahiye 
+// like enum contains mon tue wed....
+//  enum Days{
+//     mon, tue, wed, thu, fri, sat, sun
+// } 
+// let whichDay : Days; // yahan pr bss meine btaya hai variable kis data type ka hoga !
+// console.warn(whichDay);
+// enum Days{
+//     mon, tue, wed, thu, fri, sat, sun
+// } 
+// let whichDay : Days; 
+// whichDay = Days.sat;
+// console.warn(whichDay)
+// enum Days{
+//     mon="mon", tue="tue"
+// } 
+// let whichDay : Days; 
+// whichDay = Days.mon;
+// console.warn(whichDay==="mon")
+// enum Days{
+//     mon=10, tue, wed, thu, fri, sat, sun
+// } 
+// function whichDay(day:Days){
+//     return day;
+// }
+// console.warn(whichDay(Days.mon))
+// console.warn(whichDay(Days.sat))
+//  output =10 ...abb iske baad fot "tue"
+// ..output will be 11 and so on ....11 12 13 14 15
+////////////////////////////////////////////
+// what is symbol?
+// yeh ek primitive data type hi hai TS mein
+//  yeh hme ek unique id provide krta hai 
+// joh hme show nhi hoti
+// let s1 = Symbol();
+// console.warn(s1)
+// let s1 = Symbol();
+// let s2 = Symbol();
+// console.warn(s1===s2);
+// let s1 = Symbol("d1");
+// let s2 = Symbol("d2");
+// console.warn(s1.toString());
+// let s1 = Symbol("d1");
+// let data ={
+//    [s1]:  "Some data" 
+// }   
+// console.warn(data[s1]);
+// class Demo{
+//     [DemoF1](){
+//         return "same data"
+//     }
+// }
+// let d1 =new Demo();
+// console.warn(d1[DemoF1]());
